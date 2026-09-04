@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="So sánh và phân bổ báo giá nhà cung cấp Sevago">
+  <title>Sevago | Đề xuất nhà cung cấp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><button class="plain" aria-label="Ứng dụng">⠿</button><span class="cart">🛒</span><strong>Mua Hàng</strong></div>
+    <div class="account"><span>🔔</span><span class="logo">S</span><div><b>Sevago Jewelry</b><small>Quản lý</small></div><span>⌄</span></div>
+  </header>
+  <aside class="sidebar">
+    <nav>
+      <button>⌂ <span>Trang chủ</span></button><button>▱ <span>Quản lý chủ trương</span></button><button>▤ <span>Quản lý đề nghị</span></button>
+      <button>▣ <span>Quản lý giá</span></button><button class="sub">Khai báo giá</button><button class="sub active">Đề xuất chọn NCC</button>
+      <button>▧ <span>Quản lý hợp đồng</span></button><button>🛒 <span>Quản lý đơn hàng mua</span></button><button>♙ <span>Đánh giá NCC</span></button>
+      <button>▦ <span>Báo cáo</span></button><button>⚙ <span>Thiết lập</span></button>
+    </nav>
+    <button class="sidebar-foot">☰ Ẩn điều hướng</button>
+  </aside>
+
+  <main id="listPage" class="workspace">
+    <div class="breadcrumbs">Quản lý <span>›</span> Quản lý yêu cầu <span>›</span> <b>Danh sách đề xuất chọn NCC</b></div>
+    <section class="card list-card">
+      <div class="tabs"><button class="active">Tất cả (15)</button><button>Nháp (1)</button><button>Chờ duyệt (1)</button><button>Đã duyệt (1)</button><button>Đã trả lại (1)</button><button>Đã từ chối (1)</button></div>
+      <div class="toolbar"><button>Bộ lọc <b class="badge">2</b></button><button>Sắp xếp</button><label class="search">⌕<input id="requestSearch" placeholder="Tìm kiếm đề xuất"></label><button>Ngày tạo 20/04/2025</button><button>Trạng thái: Tất cả</button><span></span><button class="primary">Tạo đề xuất</button></div>
+      <div class="table-wrap"><table class="main-table"><thead><tr><th>Số đề xuất</th><th>Mã tham chiếu</th><th>Nhà cung cấp</th><th>Pháp nhân</th><th>Nội dung/Diễn giải</th><th>Ngày tạo</th><th>Người tạo</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="requestRows"></tbody></table></div>
+      <div class="pagination"><button>‹</button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>›</button><button>20 / trang</button></div>
+    </section>
+  </main>
+
+  <main id="detailPage" class="workspace hidden">
+    <div class="detail-head"><button id="backBtn" class="plain">‹ Quay lại</button><i></i><h2>Chi tiết đề xuất NCC</h2></div>
+    <div class="detail-grid"><div>
+      <section class="card summary"><small>Mã đề nghị: <b>SSP-2511-00001</b></small><div><h1>Đề xuất NCC Minh An Phát, SG Tân Sơn, Kim Phúc</h1><span class="pending">Chờ duyệt</span></div></section>
+      <section class="card info"><h3>Thông tin chung</h3><div class="info-grid"><p><span>Pháp nhân</span><b>Sevago</b></p><p><span>Nhà cung cấp</span><b>Minh An Phát, SG Tân Sơn, Kim Phúc</b></p><p><span>Mục đích sử dụng</span><b>Sản xuất</b></p><p><span>Nội dung/diễn giải</span><b>Chưa cung cấp</b></p></div></section>
+      <section class="card info"><h3>Chi tiết</h3><button id="openCompare" class="text-btn">Xem chi tiết ›</button></section>
+    </div><aside class="right-col"><section class="card"><h3>Người theo dõi</h3><div class="avatars"><i>TM</i><i>ĐN</i><i>KV</i><i>QH</i><i>ĐĐ</i></div></section><section class="card"><h3>Người xét duyệt</h3><div id="reviewers"></div></section><section class="card history"><h3>Lịch sử hoạt động</h3><p><b>17:05 24-10-2025</b><span>Cập nhật thông tin</span></p><p><b>24-10-2025 17:05</b><span>Đã duyệt</span></p></section></aside></div>
+  </main>
+
+  <div id="compareModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="modal-card compare-card">
+      <header><h2 id="compareTitle">Thông tin sản phẩm</h2><button class="plain close-modal" aria-label="Đóng">×</button></header>
+      <div class="compare-tabs"><button class="active">So sánh giá</button><button>So sánh ngoại tệ</button></div>
+      <div class="comparison-layout">
+        <aside class="product-panel"><div class="panel-head"><b>Sản phẩm đề nghị</b><button id="addProductBtn">Thêm sản phẩm</button></div><label class="search">⌕<input id="productSearch" placeholder="Tìm tên hoặc mã sản phẩm"></label><div class="filter-row"><button class="active" data-filter="all">Tất cả</button><button data-filter="open">Chưa đủ</button><button data-filter="done">Đã đủ</button></div><div id="productList" class="product-list"></div></aside>
+        <section class="supplier-panel">
+          <header id="productHeader"></header>
+          <div class="supplier-toolbar"><label class="search">⌕<input id="supplierSearch" placeholder="Tìm nhà cung cấp"></label><span id="supplierCount"></span><button id="declarePrice">Khai báo giá</button><button id="suggestPrice" class="primary">Gợi ý giá</button></div>
+          <div class="supplier-table-wrap"><table class="supplier-table"><thead><tr><th>Nhà cung cấp</th><th>Đơn giá</th><th>VAT</th><th>Thành tiền sau VAT</th><th>Chênh lệch giá</th><th>Số lượng báo</th><th>Số lượng chọn</th></tr></thead><tbody id="supplierRows"></tbody></table></div>
+          <div id="allocationStatus" class="allocation-status"></div>
+          <footer class="comparison-footer"><span>Tổng tiền được chọn <strong id="grandTotal">0 ₫</strong></span><button id="confirmAllocation" class="primary">Xác nhận phân bổ</button></footer>
+        </section>
+        <aside id="supplierDetail" class="supplier-detail hidden"></aside>
+      </div>
+      <div id="toast" class="toast hidden"></div>
+    </div>
+  </div>
+
+  <div id="formModal" class="modal hidden"><form id="productForm" class="modal-card small-modal"><header><h2>Thêm sản phẩm</h2><button type="button" class="plain close-form">×</button></header><div class="form-grid"><label>Mã đề nghị<input name="request" value="PR-2511-00004" required></label><label>Mã hàng<select name="source" id="sourceProduct"></select></label><label class="wide">Tên hàng<input id="sourceName" readonly></label><label>ĐVT<select name="unit"><option>Cái</option><option>Bộ</option><option>Chiếc</option></select></label><label>SL đề nghị<input name="qty" type="number" min="1" value="35" required></label><label class="wide">Ghi chú<input name="note" placeholder="Nhập ghi chú nếu có"></label></div><section><h3>Nhà cung cấp</h3><small>Chỉ hiển thị NCC đã có báo giá cho sản phẩm.</small><div id="supplierChecks" class="supplier-checks"></div></section><footer><button type="button" class="close-form">Hủy</button><button class="primary">Thêm vào đề xuất</button></footer></form></div>
+
+  <div id="priceModal" class="modal hidden"><form id="priceForm" class="modal-card price-modal"><header><h2>Tạo Bảng Giá</h2><button type="button" class="plain close-price">×</button></header><div class="form-grid"><label>Pháp nhân *<select><option>Sevago</option></select></label><label>Nhà cung cấp *<input name="supplier" placeholder="Nhập nhà cung cấp" required></label><label>Phân loại bảng giá *<select><option>Nguyên tắc</option><option>Theo đơn hàng</option></select></label><label>Ngày hiệu lực *<input type="date" value="2026-08-28" required></label><label>Ngày hết hạn<input type="date"></label><label>Người duyệt *<input value="Trần Thị Minh" required></label><label>Số lượng báo *<input name="qty" type="number" min="1" required></label><label>Đơn giá chưa VAT *<input name="price" type="number" min="0" required></label><label>VAT (%)<input name="vat" type="number" value="10"></label><label>Bảo hành<input name="warranty" placeholder="Nhập chính sách bảo hành"></label></div><footer><button type="button" class="close-price">Hủy</button><button type="button">Lưu nháp</button><button class="primary">Xác nhận</button></footer></form></div>
+  <script src="script.js"></script>
+</body>
+</html>
